@@ -62,7 +62,7 @@ con.connect(function(err) {
             #Profit in dollars
             
             #Profit
-            SELECT Month, SUM(Units_sold*Unit_Price - (Demand-Units_sold)*2*Unit_Price) as Sales
+            SELECT Month, SUM(Units_sold*Unit_Price - (Demand-Units_sold)*2*Unit_Price) as Sales_Profit
             FROM store_sku_monthlysales
             GROUP BY Month
             HAVING Month='June';
