@@ -52,27 +52,27 @@ con.connect(function(err) {
             #SUM
             SELECT Store, SUM(Units_sold*Unit_price) FROM store_sku_monthlysales
             GROUP BY Store
-            HAVING Store='D';
+            HAVING Store='A';
             
             #Lost Sales
-            SELECT Store_location, SKU, SUM(Demand-Units_sold) as Lost_Sale
+            SELECT Store_location, SKU, SUM(Demand-Units_sold) as Sales_Lost
             FROM store_sku_monthlysales
             GROUP BY SKU,Store_location
             HAVING SKU=1 AND Store_location='MA';
             #Profit in dollars
             
             #Profit
-            SELECT Month, SUM(Units_sold*Unit_Price - (Demand-Units_sold)*2*Unit_Price) as Profit
+            SELECT Month, SUM(Units_sold*Unit_Price - (Demand-Units_sold)*2*Unit_Price) as Sales
             FROM store_sku_monthlysales
             GROUP BY Month
-            HAVING Month='May';
+            HAVING Month='June';
             
             #Count
             SELECT Customer_Name, COUNT(*)
             FROM customers, orders 
             WHERE customers.Customer_ID = orders.Customer_ID
             group by Customer_Name
-            having Customer_Name='Forde';
+            having Customer_Name='Kawasaki';
 
             */
 
